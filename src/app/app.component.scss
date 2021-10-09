@@ -1,7 +1,92 @@
+$box-shadow: #11111A;
+$box-shadow-hover: #091E42;
+$light-gray: rgba(9, 30, 66, 0.10);
+$light-gray-o15: rgba(9, 30, 66, 0.15);
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(10, 1fr);
   column-gap: 20px;
   row-gap: 20px;
   padding: 20px;
+}
+
+.post{
+  border-radius: 4px;
+  position: relative;
+  box-shadow: rgba($box-shadow, 0.1) 0 4px 16px, rgba($box-shadow, 0.05) 0 8px 32px;
+}
+.post:hover {
+  box-shadow: rgba($box-shadow-hover, 0.25) 0 4px 8px -2px, rgba($box-shadow-hover, 0.08) 0 0px 0px 1px;
+}
+
+.post:after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  .title{
+    margin: 0;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    padding: 8px;
+  }
+  .title::first-letter {
+    text-transform: capitalize;
+  }
+  .body {
+    font-weight: 300;
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    font-size: 10px;
+    flex-grow: 2;
+    padding: 0 8px;
+    overflow: hidden;
+  }
+  .body::first-letter {
+    text-transform: capitalize;
+  }
+  .action {
+    border-top: 1px solid $light-gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px 8px;
+    .post-id {
+      color: #555;
+      margin: 0;
+      font-weight: 300;
+      font-size: 12px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .id-icon {
+        color: rgba($box-shadow-hover, 0.25);
+      }
+    }
+    .arrow {
+      color: $light-gray-o15;
+    }
+    .arrow:hover {
+      color: rgba($box-shadow-hover, 0.25);
+    }
+    mat-icon {
+      font-size: 20px;
+      height: 20px;
+      width: 20px;
+    }
+  }
 }

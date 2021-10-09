@@ -1,11 +1,11 @@
-<div class="square" (click)="cardClicked()">
+<div class="square">
   <div class="content">
     <p class="title">{{ post.title }}</p>
     <p class="body">{{ post.body }}</p>
     <div class="action">
       <div class="post-id">
-        <mat-icon class="id-icon">{{ showUser ? 'person' : 'tag' }}</mat-icon>
-        <div>{{ showUser ? post.userId : post.id }}</div>
+        <mat-icon class="id-icon">{{ selected ? 'person' : 'tag' }}</mat-icon>
+        <div>{{ selected ? post.userId : post.id }}</div>
       </div>
       <mat-icon class="arrow" aria-label="Arrow">arrow_forward</mat-icon>
     </div>

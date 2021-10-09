@@ -1,11 +1,16 @@
 <div class="wrapper">
-  <div *ngIf="inProgress">
+
+  <div *ngIf="inProgress$ | async">
     Loading...
   </div>
 
-  <div *ngIf="inProgress === false && posts.length === 0">
+  <div *ngIf="(inProgress$ | async) === false && (posts$ | async)?.length === 0">
     Oops! Failed to load posts
   </div>
 
-  <app-post *ngFor="let post of posts" [post]="post"></app-post>
+  <app-post *ngFor="let post of posts$ | async "
+            [post]="post"
+            [selected]="(selectedPostIDs$ | async)!.indexOf(post.id) > -1"
+            (click)="selectPost(post)"></app-post>
+
 </div>
