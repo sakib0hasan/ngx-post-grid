@@ -1,13 +1,15 @@
-$border-color: rgba(9, 30, 66, 0.25);
-$border-color-2: rgba(9, 30, 66, 0.08);
+$box-shadow: #11111A;
+$box-shadow-hover: #091E42;
 $light-gray: rgba(9, 30, 66, 0.10);
 $light-gray-o15: rgba(9, 30, 66, 0.15);
-
 
 :host{
   border-radius: 4px;
   position: relative;
-  box-shadow: $border-color 0 4px 8px -2px, $border-color-2 0px 0px 0px 1px;
+  box-shadow: rgba($box-shadow, 0.1) 0 4px 16px, rgba($box-shadow, 0.05) 0 8px 32px;
+}
+:host:hover {
+  box-shadow: rgba($box-shadow-hover, 0.25) 0 4px 8px -2px, rgba($box-shadow-hover, 0.08) 0 0px 0px 1px;
 }
 
 :host:after {
@@ -64,11 +66,14 @@ $light-gray-o15: rgba(9, 30, 66, 0.15);
       flex-direction: row;
       align-items: center;
       .id-icon {
-        color: $border-color;
+        color: rgba($box-shadow-hover, 0.25);
       }
     }
     .arrow {
       color: $light-gray-o15;
+    }
+    .arrow:hover {
+      color: rgba($box-shadow-hover, 0.25);
     }
     mat-icon {
       font-size: 20px;
