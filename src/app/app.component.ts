@@ -11,11 +11,13 @@ import { takeUntil, tap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit, OnDestroy {
     posts: Post[] = [];
+    inProgress = false;
     private ngUnsubscribe = new Subject();
 
     constructor(private postService: PostService) {}
 
     ngOnInit() {
+        this.inProgress = true;
         this.postService
             .GetPosts()
             .pipe(
@@ -29,6 +31,7 @@ export class AppComponent implements OnInit, OnDestroy {
             )
             .subscribe((posts) => {
                 this.posts = posts;
+                this.inProgress = false;
             });
     }
 
